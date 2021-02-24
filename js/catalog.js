@@ -37,7 +37,7 @@ function handleSubmit(event) {
 
 }
 
-// TODO: Add the selected item and quantity to the cart
+// DONE: Add the selected item and quantity to the cart
 function addSelectedItemToCart() {
   // DONE: suss out the item picked from the select list
   let item = document.getElementById('items').value;
@@ -49,13 +49,33 @@ function addSelectedItemToCart() {
   cart.addItem(item, quantity); // Ryan - this isn't done!!!!!!
 }
 
-// TODO: Update the cart count in the header nav with the number of items in the Cart
-function updateCounter() {}
+// DONEish: Update the cart count in the header nav with the number of items in the Cart
+function updateCounter() {
+  let cartCount = document.getElementById('itemCount');
+  cartCount.textContent = cart.items.length;
+}
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
 function updateCartPreview() {
   // TODO: Get the item and quantity from the form
+  var selectedProducts = event.target.items.value;
+  var productQuantity = event.target.quantity.value;
   // TODO: Add a new element to the cartContents div with that information
+  var cartContent = document.getElementById('cartContents');
+  for(var i=0; i < Product.allProducts.length; i++);
+  if(selectedProducts === Product.allProducts[i].name){
+    var imageFilePath = Product.allProducts[i].filePath;
+    console.log('imagefilepath', imageFilePath);
+    var newContent = document.createElement('div');
+    var newImage = document.createElement('img');
+    var newQuantity = document.createElement('p');
+    newQuantity.innerHTML = 'Quantity: ' +productQuantity;
+    newImage.src = imageFilePath;
+    newContent.appendChild(newImage);
+    newContent.appendChild(newQuantity);
+    cartContent.appendChild(newContent);
+  }
+
 }
 
 // Set up the "submit" event listener on the form.
