@@ -18,7 +18,7 @@ function populateForm() {
     option.setAttribute('value', Product.allProducts[i].name)
     selectElement.appendChild(option);
   }
-
+console.log(selectElement);
 }
 
 // When someone submits the form, we need to add the selected item to the cart
@@ -51,8 +51,9 @@ function addSelectedItemToCart() {
 
 // DONEish: Update the cart count in the header nav with the number of items in the Cart
 function updateCounter() {
-  let cartCount = document.getElementById('itemCount');
-  cartCount.textContent = cart.items.length;
+  document.getElementById('itemCount').textContent = `:   ${cart.items.length} item(s) in cart`;
+  // let cartCount = document.getElementById('itemCount');
+  // cartCount.textContent = cart.items.length;
 }
 
 // TODO: As you add items into the cart, show them (item & quantity) in the cart preview div
@@ -75,8 +76,8 @@ function updateCartPreview() {
     newContent.appendChild(newQuantity);
     cartContent.appendChild(newContent);
   }
-
 }
+
 
 // Set up the "submit" event listener on the form.
 // This is the trigger for the app. When a user "submits" the form, it will
